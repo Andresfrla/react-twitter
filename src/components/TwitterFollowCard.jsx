@@ -1,4 +1,6 @@
-export function TwitterFollowCard ({userName, name, isFollowing}) {
+export function TwitterFollowCard ({ children ,userName,  isFollowing}) {
+    // no mutar los props, siempre crear una variable nueva
+
     return (
     <article className='tw-followCard'>
         <header className='tw-followCard-header'>
@@ -8,10 +10,8 @@ export function TwitterFollowCard ({userName, name, isFollowing}) {
             src={`https://unavatar.io/${userName}`}/>
 
             <div className='tw-followCard-info'>
-                <strong>{name}</strong>
-                <span
-                className='tw-followCard-infoUserName'
-                >{userName}</span>
+                <strong>{children}</strong>
+                <span className='tw-followCard-infoUserName'>@{userName}</span>
             </div>
             <aside>
                 <button
