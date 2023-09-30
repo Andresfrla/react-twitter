@@ -1,5 +1,17 @@
-export function TwitterFollowCard ({ children ,userName,  isFollowing}) {
+import { useState } from "react"
+
+export function TwitterFollowCard ({ children ,userName }) {
+    const [ isFollowing, setIsFollowing ] = useState(false)
+    
     // no mutar los props, siempre crear una variable nueva
+    const text = isFollowing ? 'Siguiendo' : 'Seguir'
+    const buttonClassName = isFollowing 
+    ? 'tw-followCard-button is-following'
+    : 'tw-followCard-button'
+ 
+    const handleClick = () => {
+        setIsFollowing(!isFollowing)
+    }
 
     return (
     <article className='tw-followCard'>
@@ -15,9 +27,10 @@ export function TwitterFollowCard ({ children ,userName,  isFollowing}) {
             </div>
             <aside>
                 <button
-                className='tw-followCard-button'
+                className={buttonClassName}
+                onClick={handleClick}
                 >
-                Seguir
+                {text}
                 </button>
             </aside>
         </header>
